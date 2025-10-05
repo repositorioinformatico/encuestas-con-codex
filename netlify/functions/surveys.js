@@ -1,4 +1,4 @@
-import { createClient } from '@netlify/blobs';
+import { getStore } from '@netlify/blobs';
 import { randomUUID } from 'crypto';
 
 const ADMIN_USER = 'ximo';
@@ -6,9 +6,9 @@ const ADMIN_PASS = 'p4$$w0rd';
 const STORE_NAME = 'class-surveys';
 const STORE_KEY = 'surveys.json';
 
-const blobClient = createBlobClient();
+const blobStore = createBlobStore();
 
-function createBlobClient() {
+function createBlobStore() {
   const config = { name: STORE_NAME };
 
   if (process.env.NETLIFY_SITE_ID) {
@@ -19,7 +19,7 @@ function createBlobClient() {
     config.token = process.env.NETLIFY_BLOBS_TOKEN;
   }
 
-  return createClient(config);
+  return getStore(config);
 }
 
 const baseHeaders = {
@@ -211,7 +211,7 @@ async function handleSubmit({ fingerprint, firstSeen, payload }) {
 
 async function readStore() {
   try {
-    const stored = await blobClient.getJSON(STORE_KEY);
+    const stored = await blobStore.getJSON(STORE_KEY);
     if (!stored || !Array.isArray(stored.surveys)) {
       return { surveys: [] };
     }
@@ -225,7 +225,7 @@ async function readStore() {
 }
 
 async function writeStore(data) {
-  await blobClient.setJSON(STORE_KEY, data);
+  await blobStore.setJSON(STORE_KEY, data);
 }
 
 function serializeSurvey(survey, { isAdmin, fingerprint }) {
