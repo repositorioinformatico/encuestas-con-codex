@@ -9,7 +9,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@netlify/blobs": "^5.1.0"
+    "@netlify/blobs": "^5.0.0"
   },
   "devDependencies": {
     "netlify-cli": "^17.0.0"
