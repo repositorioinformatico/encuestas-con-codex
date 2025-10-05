@@ -6,11 +6,21 @@ const ADMIN_PASS = 'p4$$w0rd';
 const STORE_NAME = 'class-surveys';
 const STORE_KEY = 'surveys.json';
 
-const blobClient = createClient({
-  name: STORE_NAME,
-  siteId: process.env.NETLIFY_SITE_ID,
-  token: process.env.NETLIFY_BLOBS_TOKEN,
-});
+const blobClient = createBlobClient();
+
+function createBlobClient() {
+  const config = { name: STORE_NAME };
+
+  if (process.env.NETLIFY_SITE_ID) {
+    config.siteId = process.env.NETLIFY_SITE_ID;
+  }
+
+  if (process.env.NETLIFY_BLOBS_TOKEN) {
+    config.token = process.env.NETLIFY_BLOBS_TOKEN;
+  }
+
+  return createClient(config);
+}
 
 const baseHeaders = {
   'Content-Type': 'application/json',
