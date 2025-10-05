@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuestas docentes</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Encuestas de clase</h1>
+        <p>Gestiona preguntas en vivo para tu alumnado o responde como estudiante.</p>
+      </header>
+
+      <section id="login-section">
+        <form id="login-form">
+          <fieldset>
+            <legend>Acceso docente</legend>
+            <label>
+              Usuario
+              <input id="login-user" name="user" type="text" placeholder="ximo" autocomplete="username" />
+            </label>
+            <label>
+              Contraseña
+              <input id="login-password" name="password" type="password" placeholder="p4$$w0rd" autocomplete="current-password" />
+            </label>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="primary" type="submit">Entrar como docente</button>
+              <button id="logout-button" class="secondary" type="button">Salir</button>
+            </div>
+            <p id="login-feedback" class="meta"></p>
+          </fieldset>
+        </form>
+      </section>
+
+      <section id="content"></section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

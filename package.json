@@ -1,0 +1,17 @@
+{
+  "name": "netlify-survey-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Static site - nothing to build'",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^5.1.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
