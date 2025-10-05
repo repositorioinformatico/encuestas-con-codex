@@ -12,7 +12,7 @@ function createBlobStore() {
   const config = { name: STORE_NAME };
 
   if (process.env.NETLIFY_SITE_ID) {
-    config.siteId = process.env.NETLIFY_SITE_ID;
+    config.siteID = process.env.NETLIFY_SITE_ID;
   }
 
   if (process.env.NETLIFY_BLOBS_TOKEN) {
